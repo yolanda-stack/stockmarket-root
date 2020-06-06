@@ -57,7 +57,6 @@
     <modules>
     	<module>stockmarket-eureka</module>
     	<module>stockmarket-service-company</module>
-    	<module>stockmatket-service-import</module>
     	<module>stockmarket-service-exchanges</module>
     	<module>stockmarket-service-price</module>
     	<module>stockmarket-service-import</module>
