@@ -10,10 +10,10 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 将项目放到/usr/local/project下
-COPY ./target/stockmarket-eureka.jar /app/stockmarket-eureka.jar
+COPY ./target/stockmarket-eureka-0.0.1-SNAPSHOT.jar /app/stockmarket-eureka-0.0.1-SNAPSHOT.jar
 
 # 声明容器运行的服务端口
 EXPOSE 8761
 
 # 启动容器时执行的Shell命令
-ENTRYPOINT ["java","-jar","/app/stockmarket-eureka.jar"]
+ENTRYPOINT ["java","-jar","/app/stockmarket-eureka-0.0.1-SNAPSHOT.jar"]
