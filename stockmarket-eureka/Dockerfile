@@ -1,19 +1,19 @@
-# »ùÓÚjava¾µÏñ
+# åŸºäºjavaé•œåƒ
 FROM java:8
 
-# ÎªRUN¡¢CMD¡¢ENTRYPOINTÒÔ¼°COPYºÍANDÉèÖÃ¹¤×÷Ä¿Â¼
+# ä¸ºRUNã€CMDã€ENTRYPOINTä»¥åŠCOPYå’ŒANDè®¾ç½®å·¥ä½œç›®å½•
 WORKDIR /app
 
-# Í³Ò»ÈİÆ÷Óë·şÎñÆ÷Ê±¼ä
+# ç»Ÿä¸€å®¹å™¨ä¸æœåŠ¡å™¨æ—¶é—´
 ENV TZ=Asia/Shanghai
-# RUNÓÃÓÚÈİÆ÷ÄÚ²¿Ö´ĞĞÃüÁî
+# RUNç”¨äºå®¹å™¨å†…éƒ¨æ‰§è¡Œå‘½ä»¤
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# ½«ÏîÄ¿·Åµ½/usr/local/projectÏÂ
+# å°†é¡¹ç›®æ”¾åˆ°/usr/local/projectä¸‹
 COPY ./target/stockmarket-eureka.jar /app/stockmarket-eureka.jar
 
-# ÉùÃ÷ÈİÆ÷ÔËĞĞµÄ·şÎñ¶Ë¿Ú
+# å£°æ˜å®¹å™¨è¿è¡Œçš„æœåŠ¡ç«¯å£
 EXPOSE 8761
 
-# Æô¶¯ÈİÆ÷Ê±Ö´ĞĞµÄShellÃüÁî
-ENTRYPOINT ["java","-jar","/app/stock-eureka.jar"]
+# å¯åŠ¨å®¹å™¨æ—¶æ‰§è¡Œçš„Shellå‘½ä»¤
+ENTRYPOINT ["java","-jar","/app/stockmarket-eureka.jar"]
