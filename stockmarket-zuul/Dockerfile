@@ -1,22 +1,19 @@
+# åŸºäºjavaé•œåƒ
 FROM java:8
-WORKDIR /smczuul
-#ENV ¸ñÊ½Îª  ENV <key> <value> Ö¸¶¨Ò»¸ö»·¾³±äÁ¿£¬»á±»ºóĞø  RUN  Ö¸ÁîÊ¹ÓÃ£¬²¢ÔÚÈİÆ÷ÔËĞĞÊ±±£³Ö¡£
-ENV PROJECT_ARTIFACTID="smczuul" PROJECT_VERSION="0.0.1-SNAPSHOT"
-#COPY ¸ñÊ½Îª COPY <src> <dest>
-#¸´ÖÆ±¾µØÖ÷»úµÄ <src>£¨Îª Dockerfile ËùÔÚÄ¿Â¼µÄÏà¶ÔÂ·¾¶£©µ½ÈİÆ÷ÖĞµÄ <dest>
-#µ±Ê¹ÓÃ±¾µØÄ¿Â¼ÎªÔ´Ä¿Â¼Ê±£¬ÍÆ¼öÊ¹ÓÃ COPY
-COPY target/$PROJECT_ARTIFACTID-$PROJECT_VERSION.jar /smczuul/zuul.jar
-EXPOSE 8888
-# ENTRYPOINT ["java", "-jar", "/smczuul/zuul.jar"]
-ENTRYPOINT ["java","-Xms400m","-Xmx500m","-jar","/smczuul/zuul.jar"]
 
+# ä¸ºRUNã€CMDã€ENTRYPOINTä»¥åŠCOPYå’ŒANDè®¾ç½®å·¥ä½œç›®å½•
+WORKDIR /app
 
+# ç»Ÿä¸€å®¹å™¨ä¸æœåŠ¡å™¨æ—¶é—´
+ENV TZ=Asia/Shanghai
+# RUNç”¨äºå®¹å™¨å†…éƒ¨æ‰§è¡Œå‘½ä»¤
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-FROM hub.c.163.com/wuxukun/maven-aliyun:3-jdk-8      //ÏÂÔØmavenÓëjavaµÄ¾µÏñ
- # Ö¸¶¨µ±Ç°²Ù×÷Ä¿Â¼
-WORKDIR /stockmarketzuul                                          
-#Ö¸¶¨¶ÔÍâ¶Ë¿ÚºÅ
- EXPOSE 8040          
-#Æô¶¯java³ÌĞò
-#--spring.profiles.active=dev ¶à»·¾³ÏÂÖ¸¶¨»·¾³ ¡£ -cÎªÇå³ıÒÔÇ°Æô¶¯µÄÊı¾İ
-ENTRYPOINT ["java","-jar","ms_backend.jar","--spring.profiles.active=dev","-c"]
+# å°†é¡¹ç›®æ”¾åˆ°/usr/local/projectä¸‹
+COPY ./target/stockmarker-service-zuul.jar /app/stockmarker-service-zuul.jar
+
+# å£°æ˜å®¹å™¨è¿è¡Œçš„æœåŠ¡ç«¯å£
+EXPOSE 8860
+
+# å¯åŠ¨å®¹å™¨æ—¶æ‰§è¡Œçš„Shellå‘½ä»¤
+ENTRYPOINT ["java","-jar","/app/stockmarker-service-zuul.jar"]
