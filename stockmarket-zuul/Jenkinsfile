@@ -53,7 +53,6 @@ pipeline {
 		sh 'sudo docker build -t ${IMAGE_NAME}:${VERSION_ID} ./${PROJECT_NAME}'
 		def NEW_IMAGE_ID=sh(returnStdout:true,script:"sudo docker image ls -q ${IMAGE_NAME}")
 		echo "NEW_IMAGE_ID:${NEW_IMAGE_ID}"
-		}
 	       }       
             }
         }
