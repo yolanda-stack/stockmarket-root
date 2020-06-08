@@ -91,12 +91,15 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://stockmarket-eureka:8761/eureka
     healthcheck:
       enabled: true
   instance:
     prefer-ip-address: true   #开启显示IP地址
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}   #eureka页面显示IP地址：端口号
+    ip-address: 127.0.0.1      # 本机地址 
+    instance-id: 127.0.0.1:${server.port}   #eureka页面显示IP地址：端口号
+    
+    #    instance-id: ${spring.cloud.client.ip-address}:${server.port}   #eureka页面显示IP地址：端口号
     #    prefer-ip-address: false
     #    hostname: localhost
     #    instance-id: 127.0.0.1:${server.port}
