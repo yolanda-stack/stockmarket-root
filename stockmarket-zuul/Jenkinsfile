@@ -80,7 +80,7 @@ pipeline {
                    //删除所有相关镜像
                    //sh 'docker rmi -f $(docker image ls -q ${IMAGE_NAME})'
                    //启动镜像生成容器	
-			sh 'sudo docker run --name "${IMAGE_NAME}" --restart=always -p "${PORT}":"${PORT}" --network stockmarket-eureka -d ${IMAGE_NAME}:${VERSION_ID}'
+			sh 'sudo docker run --name "${IMAGE_NAME}" --restart=always -p "${PORT}":"${PORT}" --network stockmarket-network -d ${IMAGE_NAME}:${VERSION_ID}'
 					
                 }
 		}
