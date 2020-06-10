@@ -13,7 +13,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY ./target/stockmarket-service-company.jar /app/stockmarket-service-company.jar
 
 # 声明容器运行的服务端口
-EXPOSE 9001
+EXPOSE 8855
 
 # 启动容器时执行的Shell命令
 ENTRYPOINT ["java","-jar","/app/stockmarket-service-company.jar"]
