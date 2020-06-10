@@ -10,10 +10,10 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 将项目放到/usr/local/project下
-COPY ./target/stock-service-company.jar /app/stock-service-company.jar
+COPY ./target/stockmarket-service-company.jar /app/stockmarket-service-company.jar
 
 # 声明容器运行的服务端口
 EXPOSE 9001
 
 # 启动容器时执行的Shell命令
-ENTRYPOINT ["java","-jar","/app/stock-service-company.jar"]
+ENTRYPOINT ["java","-jar","/app/stockmarket-service-company.jar"]
